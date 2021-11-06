@@ -5,7 +5,7 @@ import Rating from '../components/Rating'
 import products from '../products'
 
 function ProductScreen({ match }) {
-    const product = products.find((p) => p._id == match.params.id)
+    const product = products.find((p) => p._id === match.params.id)
 
     return (
         <div>
@@ -52,7 +52,7 @@ function ProductScreen({ match }) {
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
-                                <Button className='w-100' disabled={product.countInStock == 0} type='button'>Add to Cart</Button>
+                                <Button className='w-100' disabled={product.countInStock === 0} type='button'>Add to Cart</Button>
                             </ListGroup.Item>
                         </ListGroup>
                     </Card>

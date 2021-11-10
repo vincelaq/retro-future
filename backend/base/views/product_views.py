@@ -19,12 +19,12 @@ def getProducts(request):
     products = Product.objects.filter(name__icontains=query)
 
     page = request.query_params.get('page')
-    paginator = Paginator(products, 4) # Number of products per page
+    paginator = Paginator(products, 4) 
 
     try:
         products = paginator.page(page)
     except PageNotAnInteger:
-        products = paginator.page(1) # Returns first page
+        products = paginator.page(1) 
     except EmptyPage:
         products = paginator.page(paginator.num_pages)
 

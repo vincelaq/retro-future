@@ -17,6 +17,9 @@ class Product(models.Model):
     createdAt = models.DateTimeField(auto_now_add=True)
     _id = models.AutoField(primary_key=True, editable=False)
 
+    class Meta:
+        ordering = ['-numReviews']
+
     def __str__(self):
         return str(self.name)
 
@@ -28,6 +31,9 @@ class Review(models.Model):
     comment = models.TextField(null=True, blank=True)
     createdAt = models.DateTimeField(auto_now_add=True)
     _id = models.AutoField(primary_key=True, editable=False)
+
+    class Meta:
+        ordering = ['-createdAt']
 
     def __str__(self):
         return str(self.rating)
@@ -44,6 +50,9 @@ class Order(models.Model):
     deliveredAt = models.DateTimeField(auto_now_add=False, null=True, blank=True)
     createdAt = models.DateTimeField(auto_now_add=True)
     _id = models.AutoField(primary_key=True, editable=False)
+
+    class Meta:
+        ordering = ['createdAt']
 
     def __str__(self):
         return str(self.createdAt)

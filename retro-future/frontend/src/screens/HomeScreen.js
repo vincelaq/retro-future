@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row, Col, Form } from 'react-bootstrap'
 import Product from '../components/Product'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
@@ -28,20 +28,57 @@ function HomeScreen({ history }) {
                 </Container>
             </div>
             <Container>
-                { loading ? <Loader />
-                    : error ? <Message variant='danger'>{ error }</Message>
-                        :
-                            <div>
-                                <Row>
-                                    {products.map(product => (
-                                        <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-                                            <Product product={product} />
-                                        </Col>
-                                    ))}
-                                </Row>
-                                <Paginate page={page} pages={pages} keyword={keyword} />
+                <Row>
+                <Col sm={2} md={2}>
+                    <div className='mt-5 mb-3'>
+                        <h2 style={{display: 'inline', marginRight: '12px'}}>Filters</h2>
+                        <span style={{color: '#666666', textDecoration: 'underline', fontSize: '12px'}}>Clear filters</span>
+                    </div>
+                    <h4 className='mb-3'>Categories</h4>
+                    <Form style={{fontSize: '14px'}}>
+                        <Form.Check 
+                            type='checkbox'
+                            label={`Clothing`}
+                        />
+                        <Form.Check 
+                            type='checkbox'
+                            label={`Gaming`}
+                        />
+                        <Form.Check 
+                            type='checkbox'
+                            label={`Music`}
+                        />
+                    </Form>
+                </Col>
+                <Col>
+                    <div className='d-flex justify-content-end mt-5'>
+                        <div className='d-flex flex-column justify-content-end'>
+                            <div className='border border-dark py-2 px-3 me-4'>
+                                Sort by <span style={{fontWeight: '600', color: 'black', margin: '0px 8px'}}>Popularity</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#666666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+
                             </div>
-                }
+                            <p className='d-flex justify-content-end py-2 me-4'><span>Showing 6 out of {products.length}</span></p>
+                        </div>
+                    </div>    
+                    <Container>
+                        { loading ? <Loader />
+                            : error ? <Message variant='danger'>{ error }</Message>
+                                :
+                                    <div>
+                                        <Row>
+                                            {products.map(product => (
+                                                <Col key={product._id} sm={12} md={6} lg={4} xl={4}>
+                                                    <Product product={product} />
+                                                </Col>
+                                            ))}
+                                        </Row>
+                                        <Paginate page={page} pages={pages} keyword={keyword} />
+                                    </div>
+                        }
+                    </Container>
+                </Col>
+                </Row>
             </Container>
         </div>
     )

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
+import { Container, Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
@@ -44,7 +44,7 @@ function PlaceOrderScreen({ history }) {
     }
 
     return (
-        <div>
+        <Container>
             <Checkout step1 step2 step3 step4 />
             <Row>
                 <Col md={8}>
@@ -151,7 +151,7 @@ function PlaceOrderScreen({ history }) {
                     </Card>
                 </Col>
             </Row>
-        </div>
+        </Container>
     )
 }
 

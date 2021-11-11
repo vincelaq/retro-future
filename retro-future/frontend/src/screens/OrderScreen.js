@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
+import { Container, Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { PayPalButton } from 'react-paypal-button-v2'
@@ -58,7 +58,7 @@ function OrderScreen({ match }) {
     return loading ? (<Loader />) 
         : error ? (<Message variant='danger'>{error}</Message>)
             : (
-                <div>
+                <Container>
                     <h1>Order: {order._id}</h1>
                     <Row>
                         <Col md={8}>
@@ -184,7 +184,7 @@ function OrderScreen({ match }) {
                             </Card>
                         </Col>
                     </Row>
-                </div>
+                </Container>
             )
 }
 

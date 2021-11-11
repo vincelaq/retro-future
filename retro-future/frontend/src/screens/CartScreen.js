@@ -29,7 +29,7 @@ function CartScreen({ match, location, history}) {
     }
 
     return (
-        <Container>
+        <Container className='pt-5'>
             <Row>
                 <Col md={8}>
                     <h1>Shopping Cart</h1>
@@ -40,19 +40,20 @@ function CartScreen({ match, location, history}) {
                     ) : (
                         <ListGroup variant='flush'>
                             {cartItems.map(item => (
-                                <ListGroup.Item key={item.product}>
+                                <ListGroup.Item key={item.product} className="p-0">
                                     <Row>
                                         <Col md={2}>
-                                            <Image src={item.image} alt={item.name} fluid rounded />
+                                            <Image src={item.image} alt={item.name} style={{width: '100px', objectFit: 'cover'}} />
                                         </Col>
-                                        <Col md={3}>
+                                        <Col md={3}  className='p-2'>
                                             <Link to={`/product/${item.product}`}>{item.name}</Link>
                                         </Col>
-                                        <Col md={2}>
+                                        <Col md={2}  className='p-2'>
                                             ${item.price}
                                         </Col>
-                                        <Col md={3}>
+                                        <Col md={3}  className='p-2'>
                                             <Form.Select 
+                                                style={{backgroundColor: '#EFF2F6', border: '1px solid black', width: '110px'}}
                                                 as="select"
                                                 value={item.qty}
                                                 onChange={(e) => dispatch(addToCart(item.product, Number(e.target.value)))}
@@ -67,13 +68,14 @@ function CartScreen({ match, location, history}) {
 
                                             </Form.Select>
                                         </Col>
-                                        <Col md={1}>
+                                        <Col md={1}  className='p-2'>
                                             <Button
+                                                style={{backgroundColor: '#EFF2F6', border: '1px solid black'}}
                                                 type='button'
                                                 variant='light'
                                                 onClick={() => removeFromCartHandler(item.product)}
                                             >
-                                                <i className='fas fa-trash'></i>
+                                                Remove
                                             </Button>
                                         </Col>
                                     </Row>

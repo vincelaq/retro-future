@@ -1,10 +1,9 @@
 import React from 'react'
-import { Container, Image, Button } from 'react-bootstrap'
-import { LinkContainer } from 'react-router-bootstrap'
+import { Container, Image } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 
-function SplashScreen({ }) {
+function SplashScreen() {
 
     return (
         <Container className='d-flex flex-column align-items-center'>

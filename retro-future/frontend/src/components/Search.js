@@ -18,20 +18,21 @@ function Search() {
 
     return (
         <Form onSubmit={submitHandler} className='d-flex'>
+            <Button
+                type='submit'
+                className='p-2 bg-black'
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </Button>
             <Form.Control
                 type='text'
                 name='q'
                 onChange={(e) => setKeyword(e.target.value)}
-                className='mr-sm-2 ml-sm-5'
+                className='text-white bg-black mr-sm-2 ml-sm-5 p-0'
+                placeholder='Search'
             >
             </Form.Control>
-            <Button
-                type='submit'
-                variant='outline-success'
-                className='p-2'
-            >
-                Submit
-            </Button>
+            
         </Form>
     )
 }

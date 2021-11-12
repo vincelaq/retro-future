@@ -29,7 +29,7 @@ function ShippingScreen({ history }) {
             <h1>Shipping</h1>
             <Form onSubmit={submitHandler}>
 
-                <Form.Group controlId='address'>
+                <Form.Group controlId='address' className='pb-3'>
                     <Form.Label>Address</Form.Label>
                     <Form.Control
                         required
@@ -41,7 +41,7 @@ function ShippingScreen({ history }) {
                     </Form.Control>
                 </Form.Group>
 
-                <Form.Group controlId='city'>
+                <Form.Group controlId='city' className='pb-3'>
                     <Form.Label>City</Form.Label>
                     <Form.Control
                         required
@@ -53,7 +53,7 @@ function ShippingScreen({ history }) {
                     </Form.Control>
                 </Form.Group>
 
-                <Form.Group controlId='postalCode'>
+                <Form.Group controlId='postalCode' className='pb-3'>
                     <Form.Label>Postal Code</Form.Label>
                     <Form.Control
                         required
@@ -65,7 +65,7 @@ function ShippingScreen({ history }) {
                     </Form.Control>
                 </Form.Group>
 
-                <Form.Group controlId='country'>
+                <Form.Group controlId='country' className='pb-3'>
                     <Form.Label>Country</Form.Label>
                     <Form.Control
                         required
@@ -77,7 +77,7 @@ function ShippingScreen({ history }) {
                     </Form.Control>
                 </Form.Group>
 
-                <Button type='submit' variant='primary'>
+                <Button type='submit' variant='primary' className='mb-5'>
                     Continue
                 </Button>
 

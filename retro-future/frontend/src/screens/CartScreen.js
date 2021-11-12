@@ -45,10 +45,10 @@ function CartScreen({ match, location, history}) {
                                         <Col md={2}>
                                             <Image src={item.image} alt={item.name} style={{width: '100px', objectFit: 'cover'}} />
                                         </Col>
-                                        <Col md={3}  className='p-2'>
-                                            <Link to={`/product/${item.product}`}>{item.name}</Link>
+                                        <Col md={3}  className='p-2 d-flex flex-column justify-content-center'>
+                                            <Link to={`/product/${item.product}`} style={{textDecoration: 'none'}}><h5 className='mb-0'>{item.name}</h5></Link>
                                         </Col>
-                                        <Col md={2}  className='p-2'>
+                                        <Col md={2}  className='p-2 d-flex flex-column justify-content-center'>
                                             ${item.price}
                                         </Col>
                                         <Col md={3}  className='p-2'>

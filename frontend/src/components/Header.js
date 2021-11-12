@@ -29,15 +29,15 @@ function Header() {
                         </LinkContainer>
 
                     
-                        <LinkContainer to='/'>
+                        <LinkContainer to='/home'>
                             <Nav.Link>Clothing</Nav.Link>
                         </LinkContainer>
 
-                        <LinkContainer to='/'>
+                        <LinkContainer to='/home'>
                             <Nav.Link>Gaming</Nav.Link>
                         </LinkContainer>
 
-                        <LinkContainer to='/'>
+                        <LinkContainer to='/home'>
                             <Nav.Link>Music</Nav.Link>
                         </LinkContainer>
 

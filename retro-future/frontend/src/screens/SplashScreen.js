@@ -17,7 +17,7 @@ function SplashScreen() {
                 >
                     Shop All
                 </Link>
-            <div className='mt-4' style={{height: '650px', overflow: 'hidden'}} >
+            <div className='mt-4 mb-5' style={{height: '650px', overflow: 'hidden'}} >
                 <Image src='https://retro-future-flex-525.s3.us-west-1.amazonaws.com/splash.jpg' className='w-100' style={{margin: '-3rem 0rem'}} />
             </div>
         </Container>

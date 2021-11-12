@@ -67,16 +67,16 @@ function ProfileScreen({ history }) {
 
 
     return (
-        <Container>
+        <Container className='pt-5'>
             <Row>
-                <Col md={3}>
+                <Col md={3} className='pe-4'>
                     <h2>User Profile</h2>
                     {message && <Message variant='danger'>{message}</Message>}
                     {error && <Message variant='danger'>{error}</Message>}
                     {loading && <Loader />}
                     <Form onSubmit={submitHandler}>
 
-                        <Form.Group controlId='name'>
+                        <Form.Group controlId='name' className='pt-4'>
                             <Form.Label>Name</Form.Label>
                             <Form.Control
                                 required
@@ -88,7 +88,7 @@ function ProfileScreen({ history }) {
                             </Form.Control>
                         </Form.Group>
 
-                        <Form.Group controlId='email'>
+                        <Form.Group controlId='email' className='pt-4'>
                             <Form.Label>Email Address</Form.Label>
                             <Form.Control
                                 required
@@ -100,7 +100,7 @@ function ProfileScreen({ history }) {
                             </Form.Control>
                         </Form.Group>
 
-                        <Form.Group controlId='password'>
+                        <Form.Group controlId='password' className='pt-4'>
                             <Form.Label>Password</Form.Label>
                             <Form.Control
                                 
@@ -112,7 +112,7 @@ function ProfileScreen({ history }) {
                             </Form.Control>
                         </Form.Group>
 
-                        <Form.Group controlId='passwordConfirm'>
+                        <Form.Group controlId='passwordConfirm' className='pt-4'>
                             <Form.Label>Confirm Password</Form.Label>
                             <Form.Control
                                 
@@ -123,7 +123,7 @@ function ProfileScreen({ history }) {
                             >
                             </Form.Control>
                         </Form.Group>
-                        <Button type='submit' variant='primary'>
+                        <Button type='submit' variant='primary' className='mt-4 mb-5 w-100'>
                             Update
                         </Button>
                     </Form>

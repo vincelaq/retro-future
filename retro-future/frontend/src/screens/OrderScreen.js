@@ -58,7 +58,7 @@ function OrderScreen({ match }) {
     return loading ? (<Loader />) 
         : error ? (<Message variant='danger'>{error}</Message>)
             : (
-                <Container>
+                <Container className='py-5'>
                     <h1>Order: {order._id}</h1>
                     <Row>
                         <Col md={8}>
@@ -113,7 +113,7 @@ function OrderScreen({ match }) {
                                                     <ListGroup.Item key={index}>
                                                         <Row>
                                                             <Col md={1}>
-                                                                <Image src={item.image} alt={item.name} fluid rounded />
+                                                                <Image src={item.image} alt={item.name} style={{height: '30px', width: '30px', objectFit: 'cover'}} />
                                                             </Col>
                                                             <Col>
                                                                 <Link to={`/product/${item.product}`}>{item.name}</Link>

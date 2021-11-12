@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Form, Button, Col } from 'react-bootstrap'
+import { Form, Button, Col, Container } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import FormContainer from '../components/FormContainer'
 import Checkout from '../components/Checkout'
@@ -26,30 +26,32 @@ function PaymentScreen({ history }) {
     }
 
     return (
-        <FormContainer>
-            <Checkout step1 step2 step3 />
+        <Container className='pt-5'>
+            <FormContainer>
+                <Checkout step1 step2 step3 />
 
-            <Form onSubmit={submitHandler}>
-                <Form.Group>
-                    <Form.Label as='legend'>Select Method</Form.Label>
-                    <Col>
-                        <Form.Check
-                            type='radio'
-                            label='Paypal or Credit Card'
-                            id='paypal'
-                            name='paymentMethod'
-                            checked
-                            onChange={(e) => setPaymentMethod(e.target.value)}
-                        >
+                <Form onSubmit={submitHandler}>
+                    <Form.Group>
+                        <Form.Label as='legend'>Select Method</Form.Label>
+                        <Col>
+                            <Form.Check
+                                type='radio'
+                                label='Paypal or Credit Card'
+                                id='paypal'
+                                name='paymentMethod'
+                                checked
+                                onChange={(e) => setPaymentMethod(e.target.value)}
+                            >
 
-                        </Form.Check>
-                    </Col>
-                </Form.Group>
-                <Button type='submit' variant='primary'>
-                    Continue
-                </Button>
-            </Form>
-        </FormContainer>
+                            </Form.Check>
+                        </Col>
+                    </Form.Group>
+                    <Button type='submit' variant='primary' className='mt-5'>
+                        Continue
+                    </Button>
+                </Form>
+            </FormContainer>
+        </Container>
     )
 }
 

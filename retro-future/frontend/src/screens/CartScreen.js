@@ -43,7 +43,7 @@ function CartScreen({ match, location, history}) {
                                 <ListGroup.Item key={item.product} className="p-0">
                                     <Row>
                                         <Col md={2}>
-                                            <Image src={item.image} alt={item.name} style={{width: '100px', objectFit: 'cover'}} />
+                                            <Image src={item.image} alt={item.name} style={{height: '68px', width: '80px', objectFit: 'cover'}} />
                                         </Col>
                                         <Col md={3}  className='p-2 d-flex flex-column justify-content-center'>
                                             <Link to={`/product/${item.product}`} style={{textDecoration: 'none'}}><h5 className='mb-0'>{item.name}</h5></Link>

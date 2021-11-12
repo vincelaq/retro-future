@@ -44,7 +44,7 @@ function PlaceOrderScreen({ history }) {
     }
 
     return (
-        <Container>
+        <Container className='pt-5'>
             <Checkout step1 step2 step3 step4 />
             <Row>
                 <Col md={8}>
@@ -79,7 +79,7 @@ function PlaceOrderScreen({ history }) {
                                             <ListGroup.Item key={index}>
                                                 <Row>
                                                     <Col md={1}>
-                                                        <Image src={item.image} alt={item.name} fluid rounded />
+                                                        <Image src={item.image} alt={item.name} style={{height: '30px', width: '30px', objectFit: 'cover'}} />
                                                     </Col>
                                                     <Col>
                                                         <Link to={`/product/${item.product}`}>{item.name}</Link>

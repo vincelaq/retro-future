@@ -23,6 +23,8 @@ Django = "==3.2.9"
 Pillow = "==8.4.0"
 PyJWT = "==2.3.0"
 django-storages = "*"
+django-on-heroku = "*"
+gunicorn = "*"
 
 [dev-packages]
 

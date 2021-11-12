@@ -25,6 +25,7 @@ PyJWT = "==2.3.0"
 django-storages = "*"
 django-on-heroku = "*"
 gunicorn = "*"
+whitenoise = "*"
 
 [dev-packages]
 

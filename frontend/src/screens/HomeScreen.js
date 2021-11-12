@@ -13,18 +13,24 @@ function HomeScreen({ history }) {
     const productList = useSelector(state => state.productList)
     const { error, loading, products, page, pages } = productList
 
+    const [filter, setFilter] = useState([])
     const [filteredProducts, setFilteredProducts] = useState([])
 
     let keyword = history.location.search
 
     useEffect(() => {
         dispatch(listProducts(keyword))
+        
+        if (filter.length !== 0) {
+            let newProducts =products.filter(product => filter.indexOf(product.category) !== -1)
+            setFilteredProducts(newProducts)
+        }
 
     },[dispatch, keyword])
 
     const handleFilters = (filters) => {
         console.log('Filter Array:',filters)
-
+        setFilter(filters)
         let newProducts = products.filter(product => filters.indexOf(product.category) !== -1)
 
         console.log(newProducts)

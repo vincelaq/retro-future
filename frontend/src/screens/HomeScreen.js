@@ -6,6 +6,7 @@ import Loader from '../components/Loader'
 import Message from '../components/Message'
 import Paginate from '../components/Paginate'
 import Checkbox from '../components/Checkbox'
+import Title from '../components/Title'
 import { listProducts } from '../actions/productActions'
 
 function HomeScreen({ history }) {
@@ -42,12 +43,10 @@ function HomeScreen({ history }) {
 
     return (
         <div style={{borderTop: '.25px solid gray'}}>
-            <div className='bg-black mt-0 p-3'>
-                <Container>
-                    <h1 className='text-white mb-0 pb-2'>Shop All Retro</h1>
-                    <p className='w-50 mt-0 pb-1'>Revamp your style with the vintage designer trends in clothing or achieve a nostalgic curated wardrobe thanks to our line-up of retro pieces. All pieces are authentically certified by our team before delivering to you.</p>
-                </Container>
-            </div>
+            <Title
+                title={'Shop All Retro'}
+                description={'Revamp your style with the vintage designer trends in clothing or achieve a nostalgic curated wardrobe thanks to our line-up of retro pieces. All pieces are authentically certified by our team before delivering to you.'}
+            />
             <Container>
                 <Row>
                 <Col sm={2} md={2}>

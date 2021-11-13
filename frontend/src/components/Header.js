@@ -33,7 +33,7 @@ function Header() {
                             <Nav.Link>Browse</Nav.Link>
                         </LinkContainer>
 
-                        <LinkContainer to='/'>
+                        <LinkContainer to='/sell'>
                             <Nav.Link>Sell</Nav.Link>
                         </LinkContainer>
 

@@ -64,7 +64,9 @@ function ProductScreen({ match, history }) {
                         <div>
                             <Row>
                                 <Col md={6}>
-                                    <Image src={product.image} alt={product.name} style={{width: '36rem', height: '32rem', objectFit: 'cover'}} />
+                                    <div style={{maxWidth: '34rem', maxHeight: '31rem', width: '92vw', height: '80vw', objectFit: 'cover' }}>
+                                        <Image fluid src={product.image} alt={product.name} style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+                                    </div>
                                 </Col>
                                 <Col md={6}>
                                     <ListGroup variant="flush">
@@ -136,7 +138,8 @@ function ProductScreen({ match, history }) {
                                             { product.countInStock > 0 && (
             
                                                     <div className='border border-dark' style={{width: '108px', backgroundColor: 'white'}}>
-                                                        <Form.Select 
+                                                        <Form.Select
+                                                            style={{padding: '12px 28px'}} 
                                                             as="select"
                                                             value={qty}
                                                             onChange={(e) => setQty(e.target.value)}

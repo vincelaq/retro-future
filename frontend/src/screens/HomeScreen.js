@@ -26,7 +26,7 @@ function HomeScreen({ history }) {
             setFilteredProducts(newProducts)
         }
 
-    },[dispatch, keyword])
+    },[dispatch, keyword]) // eslint-disable-line react-hooks/exhaustive-deps
 
     const handleFilters = (filters) => {
         console.log('Filter Array:',filters)

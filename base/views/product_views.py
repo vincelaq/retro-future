@@ -102,6 +102,21 @@ def updateProductReview(request, pk):
 
     review.save()
 
+    product = Product.objects.get(_id=review.product._id)
+    reviews = product.review_set.all()
+
+    if product.numReviews == 0:
+        product.rating = 0
+    else:
+        total = 0
+
+        for i in reviews:
+            total += i.rating
+        
+        product.rating = total / len(reviews)
+    
+    product.save()
+
     serializer = ReviewSerializer(review, many=False)
     return Response(serializer.data)
 

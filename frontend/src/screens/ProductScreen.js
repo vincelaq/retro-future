@@ -182,7 +182,6 @@ function ProductScreen({ match, history }) {
                                         <Col md={2}>
                                             <h2>Reviews</h2>
                                             <Rating value={product.rating} text={`${product.numReviews}`} color={'#000000'} />
-                                            {product.reviews.length === 0 && <Message variant='info'>No Review</Message>}
                                             <div className='mb-5'>
                                                 <div className='pt-4 pb-1'>Rating </div>
                                                 <div>5 ........... Excellent</div>
@@ -195,6 +194,7 @@ function ProductScreen({ match, history }) {
                                         </Col>
                                         <Col>
                                             <ListGroup variant='flush'>
+                                            {product.reviews.length === 0 && <Message variant='info'>Be the first to write a review</Message>}
                                                 {product.reviews.map((review) => (
                                                     <ListGroup.Item key={review._id} className='border-0 pb-5' style={{backgroundColor: '#EFF2F6'}}>
                                                         <div className='d-flex justify-content-between pb-4'>
@@ -206,24 +206,65 @@ function ProductScreen({ match, history }) {
                                                             </div>
                                                         </div>
                                                         <p>{review.comment}</p>
-                                                        <div>
-                                                            <span style={{
-                                                                fontFamily: 'Inter', 
-                                                                fontWeight: '400', 
-                                                                fontSize: '12px', 
-                                                                color: '#666666', 
-                                                                marginRight: '16px'
-                                                            }}>Was this review helpful? Yes (4) No (1)</span>
-                                                            |
-                                                            <span style={{
-                                                                fontFamily: 'Inter', 
-                                                                fontWeight: '400', 
-                                                                fontSize: '12px', 
-                                                                color: '#666666', 
-                                                                textDecoration: 'underline',
-                                                                marginLeft: '16px'
-                                                            }}>Flag as inappropriate</span>
-                                                        </div>
+                                                        {userInfo.id === review.user ? (
+                                                            <div>
+                                                                <Link
+                                                                    to={`/review/${review._id}`} 
+                                                                    style={{
+                                                                        fontFamily: 'Inter', 
+                                                                        fontWeight: '400', 
+                                                                        fontSize: '12px', 
+                                                                        color: '#666666', 
+                                                                        marginRight: '16px'
+                                                                }}>Edit</Link>
+                                                                |
+                                                                <span style={{
+                                                                    fontFamily: 'Inter', 
+                                                                    fontWeight: '400', 
+                                                                    fontSize: '12px', 
+                                                                    color: '#666666', 
+                                                                    marginRight: '16px',
+                                                                    marginLeft: '16px'
+                                                                }}>Delete</span>
+                                                                |
+                                                                <span style={{
+                                                                    fontFamily: 'Inter', 
+                                                                    fontWeight: '400', 
+                                                                    fontSize: '12px', 
+                                                                    color: '#666666', 
+                                                                    marginRight: '16px',
+                                                                    marginLeft: '16px'
+                                                                }}>Was this review helpful? Yes (4) No (1)</span>
+                                                                |
+                                                                <span style={{
+                                                                    fontFamily: 'Inter', 
+                                                                    fontWeight: '400', 
+                                                                    fontSize: '12px', 
+                                                                    color: '#666666', 
+                                                                    textDecoration: 'underline',
+                                                                    marginLeft: '16px'
+                                                                }}>Flag as inappropriate</span>
+                                                            </div>
+                                                        ) : (
+                                                            <div>
+                                                                <span style={{
+                                                                    fontFamily: 'Inter', 
+                                                                    fontWeight: '400', 
+                                                                    fontSize: '12px', 
+                                                                    color: '#666666', 
+                                                                    marginRight: '16px'
+                                                                }}>Was this review helpful? Yes (4) No (1)</span>
+                                                                |
+                                                                <span style={{
+                                                                    fontFamily: 'Inter', 
+                                                                    fontWeight: '400', 
+                                                                    fontSize: '12px', 
+                                                                    color: '#666666', 
+                                                                    textDecoration: 'underline',
+                                                                    marginLeft: '16px'
+                                                                }}>Flag as inappropriate</span>
+                                                            </div>
+                                                        )}
                                                     </ListGroup.Item>
                                                 ))}
 

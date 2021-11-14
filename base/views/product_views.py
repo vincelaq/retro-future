@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from base.models import Product, Review
-from base.serializers import ProductSerializer
+from base.serializers import ProductSerializer, ReviewSerializer
 
 from rest_framework import status
 
@@ -40,6 +40,12 @@ def getProducts(request):
 def getProduct(request, pk):
     product = Product.objects.get(_id=pk)
     serializer = ProductSerializer(product, many=False)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def getProductReview(request, pk):
+    review = Review.objects.get(_id=pk)
+    serializer = ReviewSerializer(review, many=False)
     return Response(serializer.data)
 
 @api_view(['POST'])
@@ -83,3 +89,24 @@ def createProductReview(request, pk):
         product.save()
 
         return Response('Review Added')
+
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])
+def updateProductReview(request, pk):
+    data = request.data
+    review = Review.objects.get(_id=pk)
+
+    review.rating = data['rating']
+    review.comment = data['comment']
+
+    review.save()
+
+    serializer = ReviewSerializer(review, many=False)
+    return Response(serializer.data)
+
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
+def deleteProductReview(request, pk):
+    review = Review.objects.get(_id=pk)
+    product.delete()
+    return Response('Producted Deleted')

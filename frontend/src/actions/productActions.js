@@ -189,8 +189,7 @@ export const deleteProductReview = (id) => async (dispatch, getState) => {
         )
 
         dispatch({
-            type: PRODUCT_DELETE_REVIEW_SUCCESS,
-            data
+            type: PRODUCT_DELETE_REVIEW_SUCCESS
         })
 
 

@@ -5,7 +5,7 @@ import { Container, Row, Col, Image, ListGroup, Button, Form } from 'react-boots
 import Rating from '../components/Rating'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
-import { listProductDetails, createProductReview } from '../actions/productActions'
+import { listProductDetails, createProductReview, deleteProductReview } from '../actions/productActions'
 import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants'
 
 
@@ -25,6 +25,8 @@ function ProductScreen({ match, history }) {
     const productReviewCreate = useSelector(state => state.productReviewCreate)
     const { loading: loadingProductReview, error: errorProductReview, success: successProductReview } = productReviewCreate
 
+    const productReviewDelete = useSelector(state => state.productReviewDelete)
+    const { loading: loadingProductReviewDelete, error: errorProductReviewDelete, success: successProductReviewDelete } = productReviewDelete
 
     useEffect(()=>{
         if (successProductReview) {
@@ -35,7 +37,7 @@ function ProductScreen({ match, history }) {
             })
         }
         dispatch(listProductDetails(match.params.id))
-    },[dispatch, match, successProductReview])
+    },[dispatch, match, successProductReview, successProductReviewDelete])
 
     const addToCartHandler = () => {
         history.push(`/cart/${match.params.id}?qty=${qty}`)
@@ -49,6 +51,14 @@ function ProductScreen({ match, history }) {
                 comment,
             }
         ))
+    }
+
+    const deleteHandler = (id) => {
+
+        if (window.confirm('Are you sure you want to delete this review?')) {
+            dispatch(deleteProductReview(id))
+        }
+
     }
 
     return (
@@ -206,26 +216,35 @@ function ProductScreen({ match, history }) {
                                                             </div>
                                                         </div>
                                                         <p>{review.comment}</p>
-                                                        {userInfo.id === review.user ? (
+                                                        { userInfo && userInfo.id === review.user ? (
                                                             <div>
+                                                                {loadingProductReviewDelete && <Loader />}
+                                                                {errorProductReviewDelete && <Message variant='danger'>{errorProductReviewDelete}</Message>}
                                                                 <Link
                                                                     to={`/review/${review._id}`} 
                                                                     style={{
                                                                         fontFamily: 'Inter', 
                                                                         fontWeight: '400', 
-                                                                        fontSize: '12px', 
+                                                                        fontSize: '14px', 
                                                                         color: '#666666', 
                                                                         marginRight: '16px'
                                                                 }}>Edit</Link>
                                                                 |
-                                                                <span style={{
-                                                                    fontFamily: 'Inter', 
-                                                                    fontWeight: '400', 
-                                                                    fontSize: '12px', 
-                                                                    color: '#666666', 
-                                                                    marginRight: '16px',
-                                                                    marginLeft: '16px'
-                                                                }}>Delete</span>
+                                                                <Button
+                                                                    onClick={() => deleteHandler(review._id)} 
+                                                                    style={{
+                                                                        border: 'none',
+                                                                        padding: '0px',
+                                                                        fontFamily: 'Inter', 
+                                                                        fontWeight: '400', 
+                                                                        fontSize: '14px',
+                                                                        backgroundColor: 'transparent', 
+                                                                        color: '#666666', 
+                                                                        marginRight: '16px',
+                                                                        marginLeft: '16px',
+                                                                        textDecoration: 'underline',
+                                                                        textTransform: 'none',
+                                                                }}>Delete</Button>
                                                                 |
                                                                 <span style={{
                                                                     fontFamily: 'Inter', 

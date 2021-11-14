@@ -45,6 +45,7 @@ def getProduct(request, pk):
 @api_view(['GET'])
 def getProductReview(request, pk):
     review = Review.objects.get(_id=pk)
+    print(review.product._id)
     serializer = ReviewSerializer(review, many=False)
     return Response(serializer.data)
 
@@ -108,5 +109,23 @@ def updateProductReview(request, pk):
 @permission_classes([IsAuthenticated])
 def deleteProductReview(request, pk):
     review = Review.objects.get(_id=pk)
-    product.delete()
-    return Response('Producted Deleted')
+    product = Product.objects.get(_id=review.product._id)
+    reviews = product.review_set.all()
+
+    review.delete()
+
+    product.numReviews -= 1
+
+    if product.numReviews == 0:
+        product.rating = 0
+    else:
+        total = 0
+
+        for i in reviews:
+            total += i.rating
+        
+        product.rating = total / len(reviews)
+    
+    product.save()
+    
+    return Response('Review Deleted')

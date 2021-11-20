@@ -39,8 +39,7 @@ function App() {
           <Route path='/sell' component={SellScreen} />
     
       </main>
-      <br/>
-      <br/>
+      <br/><br/><br/>
       <Footer />
     </Router>
   );

@@ -16,7 +16,7 @@ function HomeScreen({ history }) {
     const { error, loading, products, categories } = productList
     // const { error, loading, products, page, pages } = productList
 
-    const [visible, setVisible] = useState(9)
+    const [visible, setVisible] = useState(6)
     // const [filter, setFilter] = useState([])
     // const [filteredProducts, setFilteredProducts] = useState([])
 
@@ -32,7 +32,7 @@ function HomeScreen({ history }) {
     },[dispatch, keyword]) // eslint-disable-line react-hooks/exhaustive-deps
 
     const showMoreProducts = () => {
-        setVisible((prevValue) => prevValue + 9)
+        setVisible((prevValue) => prevValue + 6)
     }
 
     // const handleFilters = (filters) => {

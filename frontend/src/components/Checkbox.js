@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 
-function Checkbox({ handleFilters }) {
+function Checkbox({ handleFilters, categories }) {
 
     const [checked, setChecked] = useState([])
 
@@ -16,17 +16,19 @@ function Checkbox({ handleFilters }) {
         }
 
         setChecked(newChecked)
-        handleFilters(newChecked)
+        // handleFilters(newChecked)
     }
 
     const handleClearFilter = () => {
         const newChecked = []
         setChecked(newChecked)
-        handleFilters(newChecked)
+        // handleFilters(newChecked)
     }
-
+    
     return (
+        
         <div>
+            {console.log('categories:', categories)}
             <div className='d-flex mt-5 mb-3'>
                 <h2 style={{display: 'inline', marginRight: '12px'}}>Filters</h2>
                 <Button 
@@ -46,7 +48,21 @@ function Checkbox({ handleFilters }) {
             </div>
             <h4 className='mb-3'>Categories</h4>
             <Form style={{fontSize: '14px'}}>
-                <Form.Check 
+                {categories ? (
+                    <div>
+                    {categories.map((category, index) => (
+                        <Form.Check
+                            key={index} 
+                            onChange={() => handleToggle(category)}
+                            type='checkbox'
+                            label={category}
+                            checked={checked.indexOf(category) !== -1}
+                        />
+                    ))}
+                    </div>
+                ) : (<div></div>)}
+
+                {/* <Form.Check 
                     onChange={() => handleToggle('Clothing')}
                     type='checkbox'
                     label={`Clothing`}
@@ -63,10 +79,11 @@ function Checkbox({ handleFilters }) {
                     type='checkbox'
                     label={`Music`}
                     checked={checked.indexOf('Music') !== -1}
-                />
+                /> */}
             </Form>
         </div>
     )
 }
+
 
 export default Checkbox

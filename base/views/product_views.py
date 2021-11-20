@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+# from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from base.models import Product, Review
 from base.serializers import ProductSerializer, ReviewSerializer
@@ -18,23 +18,31 @@ def getProducts(request):
 
     products = Product.objects.filter(name__icontains=query)
 
-    page = request.query_params.get('page')
-    paginator = Paginator(products, 6) 
+    categories = []
 
-    try:
-        products = paginator.page(page)
-    except PageNotAnInteger:
-        products = paginator.page(1) 
-    except EmptyPage:
-        products = paginator.page(paginator.num_pages)
+    for product in products:
+        if product.category not in categories:
+            categories.append(product.category)
 
-    if page == None:
-        page = 1
+    
+    # page = request.query_params.get('page')
+    # paginator = Paginator(products, 6) 
 
-    page = int(page)
+    # try:
+    #     products = paginator.page(page)
+    # except PageNotAnInteger:
+    #     products = paginator.page(1) 
+    # except EmptyPage:
+    #     products = paginator.page(paginator.num_pages)
+
+    # if page == None:
+    #     page = 1
+
+    # page = int(page)
 
     serializer = ProductSerializer(products, many=True)
-    return Response({ 'products':serializer.data, 'page': page, 'pages': paginator.num_pages })
+    # return Response({ 'products':serializer.data, 'page': page, 'pages': paginator.num_pages })
+    return Response({'products': serializer.data, 'categories': categories})
 
 @api_view(['GET'])
 def getProduct(request, pk):

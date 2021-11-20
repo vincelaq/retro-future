@@ -6,7 +6,7 @@ function Product({ product }) {
     return (
         <Card className="mt-3 mb-5 border-0 bg-transparent">
             <Link to={`/product/${product._id}`}>
-                <Card.Img src={product.image} style={{height: '18rem', objectFit: 'cover'}} />
+                <Card.Img src={product.image} style={{height: '18rem', objectFit: 'cover', border: '1px solid black'}} />
             </Link>
             <Card.Body className='bg-transparent px-0 py-2'>
                 <Link to={`/product/${product._id}`} style={{textDecoration: 'none'}}>

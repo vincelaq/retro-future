@@ -24,20 +24,20 @@ function Header() {
             <Navbar bg="black" variant="dark" expand="lg" collapseOnSelect>
                 <Container>
                     <Nav>
-                        <LinkContainer to='/' style={{color: '#a51372'}}>
+                        <LinkContainer to='/' style={{color: '#d23189'}}> 
                             <Navbar.Brand>Retro Future</Navbar.Brand>
                         </LinkContainer>
 
                     
-                        <LinkContainer to='/home' style={{color: '#0a74b6'}}>
+                        <LinkContainer to='/home' style={{color: '#139aee'}}>
                             <Nav.Link>Browse</Nav.Link>
                         </LinkContainer>
 
-                        <LinkContainer to='/sell' style={{color: '#0a74b6'}}>
+                        <LinkContainer to='/sell' style={{color: '#139aee'}}>
                             <Nav.Link>Sell</Nav.Link>
                         </LinkContainer>
 
-                        <LinkContainer to='/about' style={{color: '#0a74b6'}}>
+                        <LinkContainer to='/about' style={{color: '#139aee'}}>
                             <Nav.Link>About</Nav.Link>
                         </LinkContainer>
 
